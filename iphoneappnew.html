@@ -2,16 +2,17 @@
 <html>
 
 <style>
-	#canvas1{width:200px;display:none;}
-	#canvas2 {width:500px;display:none}
+	#canvas1{width:200px;;}
+	#canvas2 {width:200px;}
 	#image {position:absolute;width:500px;margin-left:0px;}
 	#controls{display:none;}
-	#canvas3{width:500px;float:left;position:absolute;;display:inline-block;z-index:0;opacity:}
-	#canvas4{width:500px;display:none;}
+	#canvas3{width:500px;float:left;display:inline-block;z-index:0;opacity:}
+	#canvas4{width:500px;;}
 	#canvas5{width:500px;display:none;}
 	#c{float:left;position:absolute;opacity:1;border-style:dotted;z-index:-1;}
-	//#buttons{margin-left:300px; margin-bottom:50px; margin-top:30px; width:600px;transform:scale(2,2);}
-	#buttons{width:0px;height:100px;float:right;}
+	#buttons{margin-left:300px; margin-bottom:50px; margin-top:30px; width:600px;transform:scale(2,2);}
+	#controls{width:300px;height:100px;right:10px;position:absolute;}
+	
 	.border {margin-left:50px;}
 	.notes {background-color:white;position:absolute;text-align:center;bottom:0px;border-radius:50px;}
 	#bottombar{position:absolute;bottom:0px;z-index:1;background-color:white;opacity:0.8;}
@@ -45,14 +46,17 @@
 	<div class=image id=testrun> <span class=notes id=strengthtext> Swipe Here to adjust Strength </span>  </div>
 
 	
-<image class=show src="imgres.jpg" id=contrastbtn width=50px opacity=1 ></image>
-<image class=show src="imgres.png"  id=brightbtn width=50px opacity=1 ></image>
+<image class=show src="icons/imgres.jpg" id=contrastbtn width=50px opacity=1 ></image>
+<image class=show src="icons/imgres.png"  id=brightbtn width=50px opacity=1 ></image>
 
-<image class=show src="strength.jpg" id=strengthbtn width=50px opacity=1 ></image>
-<image class=show src="savei.jpg"  id=saveBtn></image>
+<image class=show src="icons/strength.jpg" id=strengthbtn width=50px opacity=1 ></image>
+<image class=show src="icons/savei.jpg"  id=saveBtn></image>
 	</div>
 
-	<div id=buttons>
+	
+	</div>
+		<div id=controls>
+<div id=buttons>
 	
 
 
@@ -65,25 +69,11 @@ Detail <input type=checkbox id=sharpen checked>
 <input type=checkbox id=sharpen2 checked>
 	<button id=maskb> Adjust Mask</button>
 <input id=filter type=range min=8 max=100 value=8>
-<input id=blur type=range min=1 max=80 value=60>
+<div>Blur radius<input id=blur type=range min=1 max=80 value=60></div>
 <div id=notes></div>	
 
 
 	</div>
-	</div>
-	
-	
-	
-
-	
-
-
-
-	
-
-
-<div id=controls>
-
 <br>
 <br>Exposure
 <input id=exposure  type=range  min=0 max=255 value=128 >
@@ -102,6 +92,7 @@ HDR Blur
 	
 Resize for ipad <input type=checkbox id=resize> 
 	</div>
+
 
 
 	<canvas id=canvas1></canvas>

@@ -1,0 +1,55 @@
+<html>
+<style>
+	#orig {width:500px;}
+	
+	#image1 {width:500px;position:absolute;-webkit-filter: contrast(2) grayscale(1) blur(20px) invert(1); mix-blend-mode:overlay;}
+	#image {width:500px;}
+</style>
+<body>
+<input type="file" name="file" id="file" accept="image/*;capture=camera" capture="camera" />
+
+<div id=controls>Exposure
+<input id=exposure  type=range  min=-90 max=100 >Contrast
+<input id=contrast  type=range  min=-90 max=100 >
+HDR blur radius
+<input id=blur type=range min=0 max=120>
+	</div>
+<image src="1.jpg" id=orig></image>
+<image src="1.jpg" id=image1></image>
+<image src="1.jpg" id=image></image>
+
+
+
+
+
+</body>
+<script>
+
+var imageObj = new Image();
+
+function handleFileSelect(evt) {
+			var file = evt.target.files[0]; 
+			console.log(file);		
+			imageObj.src = window.URL.createObjectURL(file);		
+}
+
+document.getElementById('file').addEventListener('change', handleFileSelect, false);
+		
+			
+			
+function performClick(node) {			
+		  	var evt = document.createEvent("MouseEvents");
+			  evt.initEvent("click", true, false);
+		 	 node.dispatchEvent(evt);
+}
+
+
+
+var image= document.getElementById('image');
+
+</script>
+
+
+
+
+</html>
