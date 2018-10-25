@@ -1,7 +1,42 @@
-var blur=function(Rad){
 
+/*StackBlur - a fast almost Gaussian Blur For Canvas
 
+Version: 	0.5
+Author:		Mario Klingemann
+Contact: 	mario@quasimondo.com
+Website:	http://www.quasimondo.com/StackBlurForCanvas
+Twitter:	@quasimondo
 
+In case you find this class useful - especially in commercial projects -
+I am not totally unhappy for a small donation to my PayPal account
+mario@quasimondo.de
+
+Or support me on flattr: 
+https://flattr.com/thing/72791/StackBlur-a-fast-almost-Gaussian-Blur-Effect-for-CanvasJavascript
+
+Copyright (c) 2010 Mario Klingemann
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 var mul_table = [
         512,512,456,512,328,456,335,512,405,328,271,456,388,335,292,512,
@@ -40,36 +75,23 @@ var shg_table = [
 		24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
 		24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ];
 
-function stackBlurImage(radius,blurAlphaChannel )
-{
-			
- 	var img = image;
-	var w = img.naturalWidth;
-    var h = img.naturalHeight;
-       
-      
-    canvas.style.width  = w + "px";
-    canvas.style.height = h + "px";
-    canvas.width = w;
-    canvas.height = h;
-    
-    context.clearRect( 0, 0, w, h );
-    context.drawImage( img, 0, 0,canvas.height,canvas.width );
-
+function stackBlurImage(canvasID, radius, blurAlphaChannel)
+{var canvas = document.getElementById(canvasID );
+    w=canvas.width;
+    h=canvas.height;
 	if ( isNaN(radius) || radius < 1 ) return;
 	
-	if ( blurAlphaChannel )
-		stackBlurCanvasRGBA( canvasID, 0, 0, w, h, radius );
-	else 
-		stackBlurCanvasRGB( canvasID, 0, 0, w, h, radius );
+stackBlurCanvasRGB( canvasID, 0, 0, w, h, radius );
 }
 
 
-function stackBlurCanvasRGBA(top_x, top_y, width, height, radius )
+function stackBlurCanvasRGBA( id, top_x, top_y, width, height, radius )
 {
 	if ( isNaN(radius) || radius < 1 ) return;
 	radius |= 0;
 	
+	var canvas  = document.getElementById( id );
+	var context = canvas.getContext("2d");
 	var imageData;
 	
 	try {
@@ -569,5 +591,3 @@ function BlurStack()
 	this.a = 0;
 	this.next = null;
 }
-
- stackBlurCanvasRGBA(0,0,canvas.width, canvas.height,Rad);}
